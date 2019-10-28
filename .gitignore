@@ -1,5 +1,5 @@
 .vagrant
 .vscode
-answers.yml
+answer-template.yml
 notes
 ubuntu-bionic-18.04-cloudimg-console.log

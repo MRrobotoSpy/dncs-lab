@@ -1,3 +1,22 @@
+
+# Index
+- [DNCS-LAB](#dncs-lab)
+- [Requirements](#requirements)
+- [How-to](#how-to)
+- [Assignment](#assignment)
+- [Design Requirements](#design-requirements)
+- [Tasks](#tasks)
+- [Notes and References](#notes-and-references)
+- [Design](#design)
+
+
+
+
+
+
+
+
+
 # DNCS-LAB
 
 This repository contains the Vagrant files required to run the virtual lab environment used in the DNCS course.
@@ -117,4 +136,5 @@ The assignment deliverable consists of a Github repository containing:
 
 
 # Design
-[ Your work goes here ]
+
+![Schema](https://github.com/MRrobotoSpy/dncs-lab/blob/master/SchemaProgetto.png)

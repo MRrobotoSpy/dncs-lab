@@ -1,6 +1,5 @@
 
-# Index
-- [Index](#index)
+
 - [DNCS-LAB](#dncs-lab)
 - [Requirements](#requirements)
 - [How-to](#how-to)
@@ -14,7 +13,6 @@
   - [Router-1](#router-1)
   - [Router-2](#router-2)
   - [Switch](#switch)
-- [Startup commands for switch go here](#startup-commands-for-switch-go-here)
   - [Host-a](#host-a)
   - [Host-b](#host-b)
   - [Host-c](#host-c)
@@ -153,21 +151,21 @@ The assignment deliverable consists of a Github repository containing:
 
 The network is splitted in 4 parts:
 
-* A : The Subnet  192.168.0.0/23 can cover up to $2^9$-2 = 510 address where the required is 345.
-* B : The Subnet  192.168.3.0/25 can cover up to $2^7$-2 = 126 address  where the required is 75.
-* C : The Subnet  192.168.6.0/23 can cover up to $2^9$-2 = 510 address where the required is 453.
-* D : The Subnet  10.0.0.0/30    can cover up to $2^2$-2 =  2  address where the required is 2.
+* A : The Subnet  192.168.0.0/23 can cover up to 2<sup>9</sup>-2 = 510 address where the required is 345.
+* B : The Subnet  192.168.3.0/25 can cover up to 2<sup>7</sup>-2  = 126 address  where the required is 75.
+* C : The Subnet  192.168.6.0/23 can cover up to 2<sup>9</sup>-2  = 510 address where the required is 453.
+* D : The Subnet  10.0.0.0/30    can cover up to 2<sup>2</sup>-2  =  2  address where the required is 2.
 
 
 <br/>
 
 
-| Subnet ID | Interface                           | Address     | Netmask              | HostMin     | HostMax       | Address requested | Address Provided | Free Address |
-| --------- | ----------------------------------- | ----------- | -------------------- | ----------- | ------------- | ----------------- | ---------------- | ------------ |
-| A         | Host-a (eth1)<br/>Router-1 (eth1.1) | 192.168.0.0 | 255.255.254.0 = 23   | 192.168.0.1 | 192.168.1.254 | 345               | $2^9$-2 = 510    | 165          |
-| B         | Host-b (eth1)<br/>Router-1 (eth1.2) | 192.168.3.0 | 255.255.255.128 = 25 | 192.168.3.1 | 192.168.3.126 | 75                | $2^7$-2 = 126    | 51           |
-| C         | Host-c (eth1)<br/>Router-2 (eth1)   | 192.168.6.0 | 255.255.254.0 = 23   | 192.168.6.1 | 192.168.7.254 | 453               | $2^9$-2 = 510    | 57           |
-| D         | Router-1 (eth2)<br/>Router-2 (eth2) | 10.0.0.0    | 255.255.255.252 = 30 | 10.0.0.1    | 10.0.0.2      | 2                 | $2^2$-2 =  2     | 0            |
+| Subnet ID | Interface                           | Address     | Netmask              | HostMin     | HostMax       | Address requested | Address Provided       | Free Address |
+| --------- | ----------------------------------- | ----------- | -------------------- | ----------- | ------------- | ----------------- | ---------------------- | ------------ |
+| A         | Host-a (eth1)<br/>Router-1 (eth1.1) | 192.168.0.0 | 255.255.254.0 = 23   | 192.168.0.1 | 192.168.1.254 | 345               | 2<sup>9</sup>-2  = 510 | 165          |
+| B         | Host-b (eth1)<br/>Router-1 (eth1.2) | 192.168.3.0 | 255.255.255.128 = 25 | 192.168.3.1 | 192.168.3.126 | 75                | 2<sup>7</sup>-2 = 126  | 51           |
+| C         | Host-c (eth1)<br/>Router-2 (eth1)   | 192.168.6.0 | 255.255.254.0 = 23   | 192.168.6.1 | 192.168.7.254 | 453               | 2<sup>9</sup>-2  = 510 | 57           |
+| D         | Router-1 (eth2)<br/>Router-2 (eth2) | 10.0.0.0    | 255.255.255.252 = 30 | 10.0.0.1    | 10.0.0.2      | 2                 | 2<sup>2</sup>-2  =  2  | 0            |
 
 
 
@@ -198,7 +196,7 @@ The network is splitted in 4 parts:
 # Code
   
   ## Router-1 
-
+```scala
 
 sudo sysctl -w net.ipv4.ip_forward=1
 
@@ -217,12 +215,12 @@ sudo ip addr add 192.168.3.1/25 dev enp0s8.2
 
 
 sudo ip route add 192.168.6.0/23 via 10.0.0.2 
-
+```
 
 
   ## Router-2
 
-
+```scala
 sudo sysctl -w net.ipv4.ip_forward=1
 
 sudo ip a add 10.0.0.2/30  dev enp0s9
@@ -234,17 +232,16 @@ sudo ip link set dev enp0s8 up
 
 sudo ip route add 192.168.0.0/22 via 10.0.0.1
 
-
+```
 
 
   ## Switch
-
+```scala
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
 apt-get install -y tcpdump
 apt-get install -y openvswitch-common openvswitch-switch apt-transport-https ca-certificates curl software-properties-common
 
-# Startup commands for switch go here
 
 
 sudo ovs-vsctl add-br switch   
@@ -256,7 +253,7 @@ sudo ip link set dev enp0s8 up
 sudo ip link set dev enp0s9 up
 sudo ip link set dev enp0s10 up
 
-
+```
 
 
 
@@ -278,7 +275,7 @@ sudo ip route add 10.0.0.0/30 via 192.168.3.1
 
 
   ## Host-c
-````scala
+```scala
 sudo apt-get update
 sudo apt -y install docker.io
 sudo systemctl start docker

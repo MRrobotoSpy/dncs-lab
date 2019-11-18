@@ -1,5 +1,5 @@
 
-
+### Index
 - [DNCS-LAB](#dncs-lab)
 - [Requirements](#requirements)
 - [How-to](#how-to)
@@ -20,10 +20,10 @@
 - [Test](#test)
   - [Key commands](#key-commands)
   - [Example:](#example)
-    - [-vagrant ssh](#vagrant-ssh)
-    - [-ping](#ping)
-    - [-ip address show](#ip-address-show)
-    - [-curl](#curl)
+    - [vagrant ssh](#vagrant-ssh)
+    - [ping](#ping)
+    - [ip address show](#ip-address-show)
+    - [curl](#curl)
 
 
 
@@ -428,7 +428,7 @@ In the Vagrantfile i had to increase the virtual memory from 256 to 512 in order
 ## Example: 
 
 
-### -vagrant ssh 
+### vagrant ssh 
 
 This will SSH into a running Vagrant machine and give you access to a shell.
 
@@ -462,7 +462,7 @@ To logout from the machine
 
 
 
-### -ping 
+### ping 
 
 Ping is a computer network administration software utility used to test the reachability of a host on an Internet Protocol (IP) network.
 
@@ -482,7 +482,7 @@ PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
 The output test the reachability of the router-1 from the host-a 
 
 
-### -ip address show 
+### ip address show 
 
 This option is used to show all IP addresses associated on all network devices.
 
@@ -508,7 +508,7 @@ vagrant@host-a:~$ ip address show
        valid_lft forever preferred_lft forever
 ```
 
-### -curl
+### curl
 
 To test if the nginx web server is successfully installed and working
 
